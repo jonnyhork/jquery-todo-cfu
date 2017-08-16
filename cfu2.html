@@ -1,90 +1,109 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>jQuery CFU 2</title>
-    <style media="screen">
-      @import url('https://fonts.googleapis.com/css?family=Eczar');
 
-      body {
-        font-family: 'Eczar', sans-serif;
-      }
+<head>
+  <meta charset="utf-8">
+  <title>jQuery CFU 2</title>
+  <style media="screen">
+    @import url('https://fonts.googleapis.com/css?family=Eczar');
 
-      ol li {
-        cursor: pointer;
-      }
+    body {
+      font-family: 'Eczar', sans-serif;
+    }
 
-      .container {
-        background-color: rgb(132, 132, 132);
-        width: 300px;
-        padding: 15px;
-        border-radius: 5px;
-      }
+    ol li {
+      cursor: pointer;
+    }
 
-      .done-task {
-        text-decoration: line-through;
-        color: #aaaaaa;
-      }
+    .container {
+      background-color: rgb(132, 132, 132);
+      width: 300px;
+      padding: 15px;
+      border-radius: 5px;
+    }
 
-      #todoList {
-        background-color: antiquewhite;
-        border-radius: 5px;
-        padding: 15px 40px;
-      }
+    .done-task {
+      text-decoration: line-through;
+      color: #aaaaaa;
+    }
 
-      #todoInput {
-        border-radius: 5px;
-        margin-right: 10px;
-        font-size: 14px;
-        width: 240px;
-      }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.1.1.js" charset="utf-8"></script>
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function() {
-        // Add your code here...
+    #todoList {
+      background-color: antiquewhite;
+      border-radius: 5px;
+      padding: 15px 40px;
+    }
 
-        // We will be creating a simulation of a basic To Do's app. Use jQuery as much as possible
+    #todoInput {
+      border-radius: 5px;
+      margin-right: 10px;
+      font-size: 14px;
+      width: 240px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.1.1.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      // Add your code here...
 
-        // Create a text <input> element with id "todoInput" for typing in a new todo item.
+      // We will be creating a simulation of a basic To Do's app. Use jQuery as much as possible
 
-
-        // Create a <button> element with id "todoSubmit" whose button text is "Add"
-
-
-        // Create an <ol> element with id "todoList" for our created todo's to live in
+      // Create a text <input> element with id "todoInput" for typing in a new todo item.
+      // Create a <button> element with id "todoSubmit" whose button text is "Add"
+      $(".container").append(`<input id = 'todoInput' type = 'text'>
+      <button id="todoSubmit">ADD</button>`)
 
 
-        // Append the <input>, <button>, and <ol> you just created to the <div> of class "container", in that order
 
 
-        // Create 2 <li> elements whose inner text is each some made up task. Append these to the <ol> element you made above.
+      // Create an <ol> element with id "todoList" for our created todo's to live in
+      $('.container').append(`<ol id="todoList"></ol>`)
+
+      // Append the <input>, <button>, and <ol> you just created to the <div> of class "container", in that order
 
 
-        // Create and attach another <li> with a made up task BEFORE the second task you appended above
+      // Create 2 <li> elements whose inner text is each some made up task. Append these to the <ol> element you made above.
+      $('#todoList').html("<li>Go eat Lunch</li><li>Affogatto!</li>")
 
+      // Create and attach another <li> with a made up task BEFORE the second task you appended above
 
-        // Add functionality to the button so when clicked,
-        // it takes the text input value and creates a new <li> under the <ol> for the todo item.
-        // It should also blank out the value of the text input
+      $('li:eq(1)').before("<li>This is the second insert</li>")
+      // Add functionality to the button so when clicked,
+      // it takes the text input value and creates a new <li> under the <ol> for the todo item.
+      // It should also blank out the value of the text input
+      $('#todoSubmit').click(function(event) {
 
+        let task = $('#todoInput').val()
 
-        // Add another event listener so that when an <li> is clicked, it will toggle the class "done-task" on that <li>
-        // Toggling means the first time you click, the class is added. Click again, it's removed.
-        // HINT: add the event listener to the <ol>, and use event.target to reference the specific <li> that was clicked within that
-        // HINT: you can't call jQuery functions on raw HTML/DOM elements
+        $('#todoList').append(`<li>${task}</li>`)
+        $('#todoInput').val('')
 
+      })
 
-        // Add an event listener on the click for the <button id="todoMinimize"> so that when clicked it "slide" toggles the container div
-        // HINT: jQuery docs on slide animations
+      // Add another event listener so that when an <li> is clicked, it will toggle the class "done-task" on that <li>
+      // Toggling means the first time you click, the class is added. Click again, it's removed.
+      // HINT: add the event listener to the <ol>, and use event.target to reference the specific <li> that was clicked within that
+      // HINT: you can't call jQuery functions on raw HTML/DOM elements
 
+      $('#todoList').click(function(event) {
+        $(event.target).addClass('done-task')
+      })
 
-      });
-    </script>
-  </head>
-  <body>
-    <!-- TYPE NOTHING HERE -->
-    <h3>SO MUCH TO DO</h3><button type="button" name="minimize" id="todoMinimize">&darr;</button>
-    <div class="container"></div>
-  </body>
+      // Add an event listener on the click for the <button id="todoMinimize"> so that when clicked it "slide" toggles the container div
+      // HINT: jQuery docs on slide animations
+
+      $('#todoMinimize').click(function() {
+        console.log('mini');
+        $('.container').slideToggle("slow")
+      })
+
+    });
+  </script>
+</head>
+
+<body>
+  <!-- TYPE NOTHING HERE -->
+  <h3>SO MUCH TO DO</h3><button type="button" name="minimize" id="todoMinimize">&darr;</button>
+  <div class="container"></div>
+</body>
+
 </html>

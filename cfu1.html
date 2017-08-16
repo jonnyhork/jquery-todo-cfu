@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>jQuery CFU 1</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.js" charset="utf-8"></script>
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function() {
-        // Add solutions here...
 
-        // use has() (first one together)
-        var element = $('form[name="secondForm"] div:last-child div div').has('span')[0];
+<head>
+  <meta charset="utf-8">
+  <title>jQuery CFU 1</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      // Add solutions here...
 
-        // use not()
-        var element = $('div').not('div:first-child')[2];
+      // use has() (first one together)
+      var element = $('form[name="secondForm"] div:last-child div div').has('span')[0];
+      console.log('using has()', element);
+      // use not()
+      var element = $('div').not('div:first-child')[2];
+      console.log('using not()', element);
 
-        // use filter()
-        var element = $('div div div').filter('div').has('span')[0];
-        // or
-        var element = $('div:last-child div div').filter(':last-child')[0];
+      // use filter()
+      var element = $('div div div').filter('div').has('span')[0];
+      // or
+      var element = $('div:last-child div div').filter(':last-child')[0];
+      console.log('using filter()', element)
 
-        // use first() or last()
+      // use first() or last()
+      var element = $()
+      // use eq()
 
-        // use eq()
+      // use next() or prev()
 
-        // use next() or prev()
+      // use closest()
 
-        // use closest()
+      // use find()
 
-        // use find()
+      console.log(element);
+    });
+  </script>
+</head>
 
-        console.log(element);
-      });
-    </script>
-  </head>
-  <body>
-    <form name="oneForm" action="index.html" method="post">
-      <input type="text" name="myTextInput" value="">
-    </form>
-    <form name="secondForm" action="index.html" method="post">
+<body>
+  <form name="oneForm" action="index.html" method="post">
+    <input type="text" name="myTextInput" value="">
+  </form>
+  <form name="secondForm" action="index.html" method="post">
+    <div>
       <div>
-        <div>
-          <div>Mercury</div>
-          <div>Venus</div>
+        <div>Mercury</div>
+        <div>Venus</div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div>Earth</div>
+        <div>Jupiter</div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div>Saturn</div>
+        <div style="color: red;">
+          <span style="color: blue;">INSIDE THE </span>SECRET NODE
         </div>
       </div>
-      <div>
-        <div>
-          <div>Earth</div>
-          <div>Jupiter</div>
-        </div>
-      </div>
-      <div>
-        <div>
-          <div>Saturn</div>
-          <div style="color: red;">
-            <span style="color: blue;">INSIDE THE </span>SECRET NODE
-          </div>
-        </div>
-      </div>
-    </form>
-  </body>
+    </div>
+  </form>
+</body>
+
 </html>
